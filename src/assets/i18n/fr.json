@@ -1,0 +1,21 @@
+{
+    "dashboard": {
+        "header": {
+            "site-title": "Base de données des ordinateurs",
+            "add-button": "Ajouter",
+            "delete-button": "Supprimer",
+            "search-area": "Chercher...",
+            "search-button": "Chercher"
+        },
+        "table": {
+            "name-column": "Nom",
+            "introduced-column": "Début de construction",
+            "discontinued-column": "Fin de construction",
+            "company-column": "Entreprise"
+        },
+        "footer": {
+            "previous-button": "Précédent",
+            "next-button": "Suivant"
+        }
+    }
+}

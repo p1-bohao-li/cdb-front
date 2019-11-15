@@ -1,0 +1,21 @@
+{
+    "dashboard": {
+        "header": {
+            "site-title": "Computer Database",
+            "add-button": "Add",
+            "delete-button": "Delete",
+            "search-area": "Search...",
+            "search-button": "Search"
+        },
+        "table": {
+            "name-column": "Name",
+            "introduced-column": "Introduced",
+            "discontinued-column": "Discontinued",
+            "company-column": "Company"
+        },
+        "footer": {
+            "previous-button": "Previous",
+            "next-button": "Next"
+        }
+    }
+}

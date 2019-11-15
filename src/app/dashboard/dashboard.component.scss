@@ -4,35 +4,14 @@
     justify-content: center;
 
 
+    nav.header {
 
-    .header {
-        position: sticky;
-        position: -webkit-sticky;
-        top: 0;
-        z-index: 1000;
-
-        a,
-        a:visited,
-        a:hover,
-        a:active {
-            text-decoration: none;
-            color: white;
-        }
-
-        .mat-toolbar {
-            background: #173e43;
-            color: #fff;
-
-            button {
-                background-color: #dddfd4;
-            }
+        span,
+        li {
+            margin-right: 10px;
         }
     }
 
-
-    .example-spacer {
-        flex: 1 1 auto;
-    }
 
     .search {
         margin-top: 10px;
@@ -52,7 +31,7 @@
 
     table {
 
-        margin: 10px 100px 50px 100px;
+        margin: 70px 100px 70px 100px;
 
         .mat-cell,
         .mat-header-cell {
@@ -81,19 +60,6 @@
             width: 15%;
         }
     }
-
-
-    // .footer {
-    //     display: flex;
-    //     justify-content: center;
-    //     // position: fixed;
-    //     // left: 0;
-    //     // bottom: 0;
-    //     // width: 100%;
-    //     // color: black;
-    //     // text-align: center;
-    //     // background: #d5f4e6;
-    // }
 
     .navbar {
         height: 50px;

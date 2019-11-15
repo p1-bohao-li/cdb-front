@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ComputerService } from 'app/service/computer.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'environments/environment';
 
+export interface LanguageDropDownOption {
+  language: string,
+  class: string,
+  text: string
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +17,6 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-
   displayedColumns: string[] = ['name', 'introduced', 'discontinued', 'company']
 
   dataSource: any;
@@ -18,16 +24,32 @@ export class DashboardComponent implements OnInit {
   // checked = false;
   // deleteModeOn = false;
 
+  languageDropDownOptions: LanguageDropDownOption[] = [
+    { language: "fr", class: "flag-icon flag-icon-fr", text: "French" },
+    { language: "en", class: "flag-icon flag-icon-us", text: "English" }
+  ]
+  currentOption: LanguageDropDownOption;
+
+
   constructor(
     private computerService: ComputerService,
-    private router: Router) {
+    private router: Router,
+    private translate: TranslateService) {
 
+    // Navigation to the same link (here, "dashboard") will refresh the page
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-
     this.router.events.subscribe((evt) => {
       this.router.navigated = false;
     });
 
+    this.setLanguage(environment.default_language)
+
+    for (let option of this.languageDropDownOptions) {
+      if (option.language === environment.default_language) {
+        this.currentOption = option;
+        break;
+      }
+    }
   }
 
   ngOnInit() {
@@ -36,6 +58,22 @@ export class DashboardComponent implements OnInit {
       err => console.log('err: ', err),
       () => console.log('Completed'),
     )
+  }
+
+  setLanguage(lang: string): void {
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang)
+  }
+
+  changeLanguage(option: LanguageDropDownOption) {
+    if (this.currentOption.language !== option.language) {
+      this.currentOption = option;
+      this.setLanguage(this.currentOption.language)
+    }
+  }
+
+  getOtherLanguages(): LanguageDropDownOption[] {
+    return this.languageDropDownOptions.filter(option => option.language !== this.currentOption.language)
   }
 
   // toggleDeleteMode() {
@@ -56,6 +94,7 @@ export class DashboardComponent implements OnInit {
   }
 
   addComputer() {
+    this.setLanguage('fr')
     console.log("Add computer called");
   }
 
@@ -64,6 +103,7 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteComputer() {
+    this.setLanguage('en')
     console.log("Delete Computer called");
   }
 }
